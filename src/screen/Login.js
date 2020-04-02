@@ -163,7 +163,7 @@ class Login extends React.Component {
                         <Text style={[styles.titleText, {width: '100%'}]}>Check Status  </Text>
                         <Text style={[styles.titleText, {width: '95%'}]}>Your Location  </Text>
                         <Text style={[styles.titleText, {width: '90%'}]}>On Aplication  </Text>
-                        <Text style={[styles.titleText, {width: '85%'}]}>ANTIVIRUS CORONA  </Text>
+                        <Text style={[styles.titleText, {width: '85%', paddingVertical: 10, textAlign: 'center'}]}>ANTIVIRUS CORONA</Text>
                      </View>
                      {/* <View style={styles.title1}>
                         <LineHorizontal size={3} style={{width: '85%', alignSelf: 'flex-end'}} color={Colors.primaryGreen1} />
@@ -273,6 +273,7 @@ const styles = StyleSheet.create({
       // opacity: 0.3,
    },
    titleText: {
+      borderRadius: 5,
       alignSelf: 'flex-end',
       fontSize: normalize(20),
       fontWeight: 'bold',
