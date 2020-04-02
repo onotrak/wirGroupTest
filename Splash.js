@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import {mainAction} from './src/redux/actions';
 import { normalize } from './src/components/helpers/helpers';
+import Colors from './src/styles/colors';
 
 class Splash extends React.Component {
 
 	componentDidMount(){
 		console.log('Splash Screen')
-		setTimeout(() => Actions.reset('Main'), 2500)
+		setTimeout(() => Actions.reset('Tabbar'), 2500)
 		// setTimeout(() => this.cekLogin(), 1500)
 	}
 
@@ -44,7 +45,7 @@ export default connect(mapStateToProps)(Splash)
 
 const styles = StyleSheet.create({
    container: {
-		backgroundColor: 'white', 
+		backgroundColor: Colors.backgrounColor, 
 		flex: 1, 
 		justifyContent:'center', 
 		alignItems:'center',

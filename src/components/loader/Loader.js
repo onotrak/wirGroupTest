@@ -7,6 +7,7 @@ import {
   SafeAreaView,
 } from 'react-native';
 import styles from './LoaderStyle';
+import Colors from '../../styles/colors';
 
 const onIOS = Platform.OS === 'ios';
 
@@ -16,9 +17,9 @@ const Loader = ({show, type}) => {
       <SafeAreaView>
         <View style={styles.container}>
           <ActivityIndicator
-            size="large"
-            color='aqua'
-            style={{fontSize: 30}}
+            size='large'
+            color={Colors.primaryGreen1}
+            style={{fontSize: 100}}
           />
         </View>
       </SafeAreaView>

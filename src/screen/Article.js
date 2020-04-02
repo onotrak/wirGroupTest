@@ -13,7 +13,7 @@ import Loader from '../components/loader/Loader';
 import { normalize } from '../components/helpers/helpers';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-class Main extends React.Component {
+class Article extends React.Component {
    constructor() {
       super();
       this.state = {
@@ -22,7 +22,7 @@ class Main extends React.Component {
    }
    
    componentDidMount() {
-		console.log('Home Screen')
+		console.log('Article Screen')
       BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
    }
 
@@ -42,19 +42,8 @@ class Main extends React.Component {
          <View styl={styles.container}>
             <Loader show={this.state.isLoading} />
             <View style={styles.content}>
-               <Text style={styles.textStyle}>
-                  Welcome
-               </Text>
-               <Text style={styles.textStyle}>
-                  ONOTRAK Starter
-               </Text>
-               <Icon name='shield-home' color='black' size={30} />
-               <Icon name='shield-account' color='black' size={30} />
-               <Icon name='shield-link-variant' color='black' size={30} />
+               <Icon name='shield-link-variant' color='black' size={100} />
             </View>
-            <TouchableOpacity onPress={()=> this.onPressLogin()} style={styles.btnLogin}>
-               <Text style={styles.textBtn}>LOGIN</Text>
-            </TouchableOpacity>
          </View>
       );
    }
@@ -95,7 +84,7 @@ const mapStateToProps = ({mainReducer}) => ({
   main: mainReducer,
 });
 
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps)(Article);
 
 const styles = StyleSheet.create({
    container: {

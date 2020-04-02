@@ -13,7 +13,7 @@ import Loader from '../components/loader/Loader';
 import { normalize } from '../components/helpers/helpers';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-class Main extends React.Component {
+class Home extends React.Component {
    constructor() {
       super();
       this.state = {
@@ -48,9 +48,7 @@ class Main extends React.Component {
                <Text style={styles.textStyle}>
                   ONOTRAK Starter
                </Text>
-               <Icon name='shield-home' color='black' size={30} />
-               <Icon name='shield-account' color='black' size={30} />
-               <Icon name='shield-link-variant' color='black' size={30} />
+               <Icon name='shield-home' color='black' size={100} />
             </View>
             <TouchableOpacity onPress={()=> this.onPressLogin()} style={styles.btnLogin}>
                <Text style={styles.textBtn}>LOGIN</Text>
@@ -95,7 +93,7 @@ const mapStateToProps = ({mainReducer}) => ({
   main: mainReducer,
 });
 
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps)(Home);
 
 const styles = StyleSheet.create({
    container: {

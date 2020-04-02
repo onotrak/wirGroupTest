@@ -13,6 +13,7 @@ import {Provider} from 'react-redux';
 
 import {store, persistor} from './src/redux/store';
 import Routing from './src/navigations/Routing';
+import Colors from './src/styles/colors';
 // import Routing from './src/screen/Main';
 
 const App = () => {
@@ -21,7 +22,7 @@ const App = () => {
       <PersistGate loading={null} persistor={persistor}>
         <StatusBar
           barStyle="light-content"
-          backgroundColor='aqua'
+          backgroundColor={Colors.backgrounColor}
         />
         <SafeAreaView style={styles.container}>
           <Routing />

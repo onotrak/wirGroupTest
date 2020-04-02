@@ -6,16 +6,20 @@ import {Router, Scene, Actions} from 'react-native-router-flux';
 import Splash from '../../Splash';
 import Main from '../screen/Main';
 import Login from '../screen/Login';
+import Home from '../screen/Home';
+import Article from '../screen/Article';
+import Account from '../screen/Account';
+
+//Icon
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Colors from '../styles/colors';
 
 
-// const TabIcon = ({source, focused}) => {
-// 	return (
-// 		<View style={{flexDirection: 'column', height: 45, width: 45, justifyContent: 'center', paddingTop: 3}}>
-// 			<Image source={Selected} style={{justifyContent: 'center', width: 45, height: 4, tintColor: focused ? '':'white' }} resizeMode='contain'/>
-// 			<Image source={source} style={{justifyContent: 'center', width: 45, height: 30}} resizeMode='contain'/>
-// 		</View>
-// 	)
-// };
+const TabIcon = ({source, focused}) => {
+	return (
+		<Icon name={focused ? source : source+'-outline'} color={Colors.primaryGreen4} size={30} style={{marginTop: 10, marginBottom: 5}}/>
+	)
+};
 
 export default class Routing extends Component {
 	render(){
@@ -25,12 +29,11 @@ export default class Routing extends Component {
 					<Scene key="Splash" component={Splash} initial hideNavBar/>
 					<Scene key="Main" component={Main} hideNavBar/>
 					<Scene key="Login" component={Login} hideNavBar/>
-					{/* <Scene key="Tabbar" tabs showLabel={true} tabBarStyle={{backgroundColor:'#FFFFFF'}} inactiveTintColor= {Color.primary} activeTintColor={Color.primary} hideNavBar>
-							<Scene key="Home" component={Home} title="Home" source={HomeIcon} icon={TabIcon} hideNavBar/>
-							<Scene key="History" component={History} title="History" source={HistoryIcon} icon={TabIcon} hideNavBar/>
-							<Scene key="Help" component={Help} title="Help" source={HelpIcon} icon={TabIcon} hideNavBar/>
-							<Scene key="More" component={More} title="More" source={MoreIcon} icon={TabIcon} hideNavBar/>
-					</Scene> */}
+					<Scene key="Tabbar" tabs showLabel={true} tabBarStyle={{backgroundColor: Colors.backgrounColor}} inactiveTintColor= {Colors.primaryGreen4} activeTintColor={Colors.primaryGreen4} hideNavBar>
+						<Scene key="Article" component={Article} title="Article" source='shield-link-variant' icon={TabIcon} hideNavBar/>
+						<Scene key="Home" component={Home} initial title="Home" source='shield-home' icon={TabIcon} hideNavBar/>
+						<Scene key="Account" component={Account} title="Account" source='shield-account' icon={TabIcon} hideNavBar/>
+					</Scene>
 				</Scene>
 			</Router>
 		)
