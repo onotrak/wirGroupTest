@@ -5,6 +5,7 @@ const Colors = {
 	primaryGreen4: 'rgb(3,108,30)',
 	backgrounColor: 'rgb(210,244,210)',
 	white: 'white',
+	transparent: 'transparent'
 };
 
 export default Colors;
