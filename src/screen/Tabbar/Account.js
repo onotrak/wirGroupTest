@@ -22,10 +22,19 @@ class Account extends React.Component {
       super();
       this.state = {
          isLoading: false,
+         name: '',
+         email: '',
       };
    }
    
    componentDidMount() {
+      const {isLoggedin, userData} = this.props.main
+		if(isLoggedin){
+         this.setState({
+            name: userData.user.name,
+            email: userData.user.email,
+         })
+      }
       BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
    }
 
@@ -41,7 +50,7 @@ class Account extends React.Component {
    }
    
    render(){
-      const {user} = this.props.main.userData
+      const {name, email} = this.state
       return (
          <View styl={styles.container}>
             <Loader show={this.state.isLoading} />
@@ -49,13 +58,13 @@ class Account extends React.Component {
                <View style={styles.card1}>
                   {/* <ImageBackground source={require('../assets/images/city_img.jpg')} style={styles.imgbackgoundStyle} > */}
                      <Icon name='shield-account' color='black' size={100} />
-                     <Text style={styles.name}>{user.name}</Text>
+                     <Text style={styles.name}>{name}</Text>
                   {/* </ImageBackground> */}
                </View>
                <ScrollView showsVerticalScrollIndicator= {false}>
                   <Text style={styles.textTitle}>E-mail</Text>
                   <View style={[styles.card2, {width: '100%'}]}>
-                     <Text style={styles.textStyle}>{user.email}</Text>
+                     <Text style={styles.textStyle}>{email}</Text>
                   </View>
                   <Text style={styles.textTitle}>Location</Text>
                   <View style={[styles.card2, {width: '90%'}]}>

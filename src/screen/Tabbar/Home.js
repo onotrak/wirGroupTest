@@ -49,8 +49,11 @@ class Home extends React.Component {
                </Text>
                <Icon name='shield-home' color='black' size={100} />
             </View>
-            <TouchableOpacity onPress={()=> this.onPressLogin()} style={styles.btnLogin}>
-               <Text style={styles.textBtn}>LOGIN</Text>
+            <TouchableOpacity onPress={()=> Actions.Article()} style={styles.btnLogin}>
+               <Text style={styles.textBtn}>Article</Text>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={()=> Actions.CovidData()} style={styles.btnLogin}>
+               <Text style={styles.textBtn}>Covid</Text>
             </TouchableOpacity>
          </View>
       );

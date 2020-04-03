@@ -48,7 +48,7 @@ class Article extends React.Component {
       if(articleSuccess){
          this.setState({data: data.concat(articleData)})
       }else(
-         showMessage('Get Article Error')
+         showMessage('Get Article Error', 'long')
       )
    }
    

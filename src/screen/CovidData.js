@@ -83,10 +83,16 @@ class CovidData extends React.Component {
       return (
          <View styl={styles.container}>
             <Loader show={this.state.isLoading} />
+            <View style={styles.header}>
+               <TouchableOpacity onPress={()=>Actions.pop()} style={styles.btnHeader}>
+                  <Icon name='chevron-left' color={Colors.white} size={30} />
+               </TouchableOpacity>
+               <Text style={styles.textHeader}>COVID Menu</Text>
+            </View>
             <View style={styles.content}>
-                  <Text style={styles.textTitle}>Data COVID-19 Di</Text>
-                  <Text style={styles.textTitle}>{dataCorona.Provinsi}</Text>
                <ScrollView showsVerticalScrollIndicator={false}>
+               <Text style={styles.textTitle}>Data COVID-19 Di</Text>
+               <Text style={styles.textTitle}>{dataCorona.Provinsi}</Text>
                <View style={styles.viewCard}>
                   <View style={[styles.cardStyle, Shadow.shadow]}>
                      <View style={styles.card1Style}>
@@ -159,25 +165,8 @@ class CovidData extends React.Component {
    }
 
    handleBackButton = () => {
-      Alert.alert(
-         "Exit App",
-         "Exiting the application?",
-         [
-            {
-               text: "Cancel",
-               onPress: () => null,
-               style: "cancel"
-            },
-            {
-               text: "OK",
-               onPress: () => BackHandler.exitApp()
-            }
-         ],
-         {
-            cancelable: false
-         }
-      );
-      return true;
+      Actions.pop()
+      return true
    }
 
 };
@@ -198,10 +187,29 @@ const styles = StyleSheet.create({
    content: {
       // flex: 1,
       width: '100%',
-      height: '100%',
-      padding: 15,
-      paddingBottom: 0,
+      height: '92%',
+      paddingHorizontal: 15,
+      paddingVertical: 0,
       backgroundColor: Colors.backgroundColor,
+   },
+   header: {
+      flexDirection: 'row',
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: Colors.primaryGreen3,
+      width: '100%',
+      height: '8%',
+   },
+   textHeader: {
+      width: '85%',
+      color: Colors.white,
+      textAlignVertical: 'center',
+      fontSize: normalize(17),
+      paddingVertical: 15
+   },
+   btnHeader: {
+      width: '15%',
+      paddingHorizontal: 15,
    },
    textTitle: {
       color: Colors.primaryGreen4,

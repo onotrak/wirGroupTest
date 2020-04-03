@@ -13,8 +13,6 @@ class Splash extends React.Component {
       this.props.dispatch(mainAction.getCoronaProv());
       this.props.dispatch(mainAction.getCoronaStatus());
 		this.checkLogin()
-		// setTimeout(() => Actions.reset('Login'), 2500)
-		// setTimeout(() => this.checkLogin(), 1500)
 
 	}
 
