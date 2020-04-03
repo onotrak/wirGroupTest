@@ -52,11 +52,6 @@ class Login extends React.Component {
       console.log('WRP',nextProps.main)
       const {loginSuccess, loginError, loginData, registerSuccess, registerError, registerData } = nextProps.main;
       if(registerSuccess || loginSuccess){
-         this.setState({
-            isLoading: false,
-            loginActive: false,
-            registerActive: false,
-         })
          if(registerSuccess){
             showMessage('Register '+registerData.status.message+'!')
             setTimeout(() => {
@@ -64,11 +59,24 @@ class Login extends React.Component {
             }, 2000)
          }
          if(loginSuccess){
+            Actions.reset('Tabbar')
             showMessage('Login '+loginData.status.message+'!')
             setTimeout(() => {
                showMessage('Welcome Back '+loginData.data.user.name+'!')
             }, 2000)
          }
+         this.setState({
+            isLoading: false,
+            loginActive: false,
+            registerActive: false,
+            email: '',
+            password: '',
+            name: '',
+            emailReg: '',
+            passwordReg: '',
+            passwordConfirmation: '',
+            showPassword: true,
+         })
       }
       if(registerError || loginError){
          this.setState({isLoading: false})

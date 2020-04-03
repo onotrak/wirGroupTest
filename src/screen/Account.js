@@ -15,6 +15,7 @@ import Loader from '../components/loader/Loader';
 import { normalize } from '../components/helpers/helpers';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import Colors from '../styles/colors';
+import { LOGOUT } from '../redux/types';
 
 class Account extends React.Component {
    constructor() {
@@ -82,11 +83,28 @@ class Account extends React.Component {
    }
 
    onPressLogout = () => {
-      this.setState({isLoading: true})
-      setTimeout(() => {
-         this.setState({isLoading: false})
-         Actions.Login()
-      }, 2000)
+      Alert.alert(
+         'Log Out',
+         'Are you sure? Logging out will remove all account data.',
+         [
+            {
+               text: "Cancel",
+               onPress: () => null,
+               style: "cancel"
+            },
+            {
+               text: "OK",
+               onPress: () => {
+                  this.props.dispatch({type: LOGOUT})
+                  // Actions.Login()
+                  Actions.reset('Login')
+               }
+            }
+         ],
+         {
+            cancelable: false
+         }
+      );
    }
 
    handleBackButton = () => {

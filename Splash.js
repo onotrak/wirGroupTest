@@ -9,22 +9,24 @@ import Colors from './src/styles/colors';
 class Splash extends React.Component {
 
 	componentDidMount(){
-		console.log('Splash Screen')
+		console.log('Splash Screen', this.props.main)
 		setTimeout(() => Actions.reset('Login'), 2500)
-		// setTimeout(() => this.cekLogin(), 1500)
+		// setTimeout(() => this.checkLogin(), 1500)
+		this.checkLogin()
+
 	}
 
-	// cekLogin = () => {
-	// 	if(this.props.loggedIn){
-	// 		this.props.dispatch(mainAction.getMenu())
-	// 		setTimeout(() => {
-	// 			Actions.reset('Tabbar'), 
-	// 			this.props.dispatch({type: 'RESET'});
-	// 		}, 2500)            
-	// 	} else {
-	// 		setTimeout(() => Actions.reset('Login'), 2500)
-	// 	}
-	// }
+	checkLogin = () => {
+		if(this.props.main.isLoggedin){
+			// this.props.dispatch(mainAction.getMenu())
+			setTimeout(() => {
+				Actions.reset('Tabbar')
+				// this.props.dispatch({type: 'RESET'});
+			}, 2500)            
+		} else {
+			setTimeout(() => Actions.reset('Login'), 2500)
+		}
+	}
 
 	render(){
 		return (
