@@ -4,7 +4,11 @@ import {
   HOME_DATA,
   HOME_DATA_ERROR,
 
-  //MENU
+  //ARTICLE
+  ARTICLE_DATA,
+  ARTICLE_DATA_ERROR,
+
+  //COVID
   MENU_DATA,
   MENU_DATA_2,
   MENU_DATA_ERROR,
@@ -37,7 +41,24 @@ export const postHome = (params, headers) => {
   };
 };
 
-//MENU
+//ARTICLE
+export const getArticle = (params, header) => {
+  return dispatch => {
+    api
+      .getArticle(params, header)
+      .then(response => {
+        console.log('article status', response);
+        dispatch({type: ARTICLE_DATA, response});
+      })
+      .catch(error => {
+        const response = error.response;
+        console.log(response, 'error');
+        dispatch({type: ARTICLE_DATA_ERROR, response});
+      });
+  };
+};
+
+//COVID
 export const getCoronaProv = params => {
   return dispatch => {
     api

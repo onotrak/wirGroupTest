@@ -149,7 +149,7 @@ const styles = StyleSheet.create({
       height: '100%',
       width: '100%',
       paddingHorizontal: 20,
-      backgroundColor: Colors.backgrounColor
+      backgroundColor: Colors.backgroundColor
    },
    // imgbackgoundStyle: {
    //    width: '100%',
@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
       borderRadius: 5,
       padding: 10,
       marginBottom: 15,
-      backgroundColor: Colors.backgrounColor,
+      backgroundColor: Colors.backgroundColor,
       // alignItems: 'center',
       justifyContent: 'center',
       borderWidth: 1,

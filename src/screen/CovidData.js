@@ -206,7 +206,7 @@ const styles = StyleSheet.create({
       height: '100%',
       padding: 15,
       paddingBottom: 0,
-      backgroundColor: Colors.backgrounColor,
+      backgroundColor: Colors.backgroundColor,
    },
    textTitle: {
       color: Colors.primaryGreen4,
@@ -291,7 +291,7 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
       marginBottom: 15,
       alignItems: 'center',
-      backgroundColor: Colors.backgrounColor,
+      backgroundColor: Colors.backgroundColor,
       borderWidth: 1,
       borderColor: Colors.primaryGreen1,
       borderRadius: 10,

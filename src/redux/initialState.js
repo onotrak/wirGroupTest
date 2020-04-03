@@ -5,7 +5,12 @@ const mainInitialState = {
 	homeDataSuccess: false,
 	homeDataError: false,
 
-	//MENU
+	//ARTICLE
+	articleData: {},
+	articleSuccess: false,
+	articleError: false,
+
+	//COVID
 	provCoronaSuccess: false,
 	statusCoronaSuccess: false,
 	getCoronaError: false,

@@ -19,7 +19,18 @@ export default {
 		});
 	},
 
-	//MENU
+	//ARTICLE
+	getArticle: (params, header) => {
+		return API(url.ARTICLE_PROCESS+params, {
+			method: 'GET',
+			head: {
+				'Content-Type': 'application/json',
+				Authorization: 'Bearer '+ header,
+			},
+		});
+	},
+
+	//COVID
 	getCoronaProv: params => {
 		return API2(url.MENU_PROCESS, {
 			method: 'GET',

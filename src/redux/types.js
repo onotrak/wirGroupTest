@@ -1,3 +1,8 @@
+//ARTICLE
+export const ARTICLE_DATA = 'ARTICLE_DATA';
+export const ARTICLE_DATA_ERROR = 'ARTICLE_DATA_ERROR';
+export const RESET_ARTICLE = 'RESET_ARTICLE';
+
 //HOME
 export const HOME_DATA = 'HOME_DATA';
 export const HOME_DATA_ERROR = 'HOME_DATA_ERROR';

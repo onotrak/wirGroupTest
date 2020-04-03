@@ -5,6 +5,11 @@ import {
   HOME_DATA,
   HOME_DATA_ERROR,
 
+  //ARTICLE
+  RESET_ARTICLE,
+  ARTICLE_DATA,
+  ARTICLE_DATA_ERROR,
+
   //MENU
   RESET_MENU,
   MENU_DATA,
@@ -48,6 +53,26 @@ const mainReducer = (state = initialState, action) => {
         ...state,
         // homeData: action.response,
         homeDataError: true,
+      };
+    
+    //ARTICLE
+    case RESET_ARTICLE:
+      return {
+        ...state,
+        articleSuccess: false,
+        articleError: false,
+      };
+    case ARTICLE_DATA:
+      return {
+        ...state,
+        articleData: action.response.data,
+        articleSuccess: true,
+      };
+    case ARTICLE_DATA_ERROR:
+      return {
+        ...state,
+        // articleData: action.response,
+        articleError: true,
       };
 
     //MENU

@@ -22,7 +22,7 @@ const App = () => {
       <PersistGate loading={null} persistor={persistor}>
         <StatusBar
           barStyle="light-content"
-          backgroundColor={Colors.backgrounColor}
+          backgroundColor={Colors.backgroundColor}
         />
         <SafeAreaView style={styles.container}>
           <Routing />

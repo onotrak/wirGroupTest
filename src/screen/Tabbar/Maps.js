@@ -60,11 +60,7 @@ class Maps extends React.Component {
    }
 
    onPressLogin = () => {
-      this.setState({isLoading: true})
-      setTimeout(() => {
-         this.setState({isLoading: false})
-         Actions.Login()
-      }, 2000)
+      Actions.Article()
    }
 
    handleBackButton = () => {

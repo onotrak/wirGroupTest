@@ -463,7 +463,7 @@ const styles = StyleSheet.create({
       justifyContent: 'space-between',
       marginBottom: 15,
       alignItems: 'center',
-      backgroundColor: Colors.backgrounColor,
+      backgroundColor: Colors.backgroundColor,
       borderRadius: 10,
    },
    textInputStyle: {

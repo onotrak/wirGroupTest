@@ -20,10 +20,10 @@ class Splash extends React.Component {
 
 	checkLogin = () => {
 		if(this.props.main.isLoggedin){
-			// this.props.dispatch(mainAction.getMenu())
+			const {userData} = this.props.main
+			this.props.dispatch(mainAction.getArticle(1, userData.token));
 			setTimeout(() => {
 				Actions.reset('Tabbar')
-				// this.props.dispatch({type: 'RESET'});
 			}, 1000)            
 		} else {
 			setTimeout(() => Actions.reset('Login'), 1000)
@@ -49,7 +49,7 @@ export default connect(mapStateToProps)(Splash)
 
 const styles = StyleSheet.create({
    container: {
-		backgroundColor: Colors.backgrounColor, 
+		backgroundColor: Colors.backgroundColor, 
 		flex: 1, 
 		justifyContent:'center', 
 		alignItems:'center',

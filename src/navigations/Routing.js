@@ -32,7 +32,7 @@ export default class Routing extends Component {
 				<Scene key="root">
 					<Scene key="Splash" component={Splash} initial hideNavBar/>
 					<Scene key="Login" component={Login} hideNavBar/>
-					<Scene key="Tabbar" tabs showLabel={true} tabBarStyle={{backgroundColor: Colors.backgrounColor}} inactiveTintColor= {Colors.primaryGreen4} activeTintColor={Colors.primaryGreen4} hideNavBar>
+					<Scene key="Tabbar" tabs showLabel={true} tabBarStyle={{backgroundColor: Colors.backgroundColor}} inactiveTintColor= {Colors.primaryGreen4} activeTintColor={Colors.primaryGreen4} hideNavBar>
 						<Scene key="Maps" component={Maps} title="Maps" source='shield-link-variant' icon={TabIcon} hideNavBar/>
 						<Scene key="Home" component={Home} initial title="Home" source='shield-home' icon={TabIcon} hideNavBar/>
 						<Scene key="Account" component={Account} title="Account" source='shield-account' icon={TabIcon} hideNavBar/>
