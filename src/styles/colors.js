@@ -5,7 +5,10 @@ const Colors = {
 	primaryGreen4: 'rgb(3,108,30)',
 	backgrounColor: 'rgb(210,244,210)',
 	white: 'white',
-	transparent: 'transparent'
+	transparent: 'transparent',
+	positif: 'rgb(248,38,73)',
+	sembuh: 'rgb(9,173,149)',
+	meninggal: 'rgb(212,63,141)',
 };
 
 export default Colors;

@@ -78,6 +78,7 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
+    entryFile: "index.js",
     enableHermes: false,  // clean and rebuild if changing
 ]
 
@@ -191,6 +192,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     //noinspection GradleDynamicVersion
     implementation "com.facebook.react:react-native:+"  // From node_modules
+    implementation project(':react-native-maps')
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
 

@@ -6,6 +6,7 @@ import {
 
   //MENU
   MENU_DATA,
+  MENU_DATA_2,
   MENU_DATA_ERROR,
   
   //REGISTER
@@ -37,13 +38,28 @@ export const postHome = (params, headers) => {
 };
 
 //MENU
-export const getMenu = params => {
+export const getCoronaProv = params => {
   return dispatch => {
     api
-      .getMenu(params)
+      .getCoronaProv(params)
       .then(response => {
-        console.log(response);
+        console.log('corona prov', response);
         dispatch({type: MENU_DATA, response});
+      })
+      .catch(error => {
+        const response = error.response.data;
+        console.log(response, 'error');
+        dispatch({type: MENU_DATA_ERROR, response});
+      });
+  };
+};
+export const getCoronaStatus = params => {
+  return dispatch => {
+    api
+      .getCoronaStatus(params)
+      .then(response => {
+        console.log('corona status', response);
+        dispatch({type: MENU_DATA_2, response});
       })
       .catch(error => {
         const response = error.response.data;

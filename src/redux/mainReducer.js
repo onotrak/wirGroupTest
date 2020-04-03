@@ -8,6 +8,7 @@ import {
   //MENU
   RESET_MENU,
   MENU_DATA,
+  MENU_DATA_2,
   MENU_DATA_ERROR,
   
   //REGISTER
@@ -32,6 +33,7 @@ const mainReducer = (state = initialState, action) => {
     //HOME
     case RESET_HOME:
       return {
+        ...state,
         homeDataSuccess: false,
         homeDataError: false,
       };
@@ -51,25 +53,33 @@ const mainReducer = (state = initialState, action) => {
     //MENU
     case RESET_MENU:
       return {
-        menuDataSuccess: false,
-        menuDataError: false,
+        ...state,
+        provCoronaSuccess: false,
+        statusCoronaSuccess: false,
+        getCoronaError: false,
       };
     case MENU_DATA:
       return {
         ...state,
-        menuData: action.response,
-        menuDataSuccess: true,
+        provCorona: action.response,
+        provCoronaSuccess: true,
+      };
+    case MENU_DATA_2:
+      return {
+        ...state,
+        statusCorona: action.response,
+        statusCoronaSuccess: true,
       };
     case MENU_DATA_ERROR:
       return {
         ...state,
-        // menuData: action.response,
-        menuDataError: true,
+        getCoronaError: true,
       };
 
     //REGISTER
     case RESET_REGISTER:
       return {
+        ...state,
         registerSuccess: false,
         registerError: false,
         registerData: {}
@@ -90,6 +100,7 @@ const mainReducer = (state = initialState, action) => {
     //LOGIN
     case LOGOUT:
       return {
+        ...state,
         isLoggedin: false,
         userData: {},
       };
@@ -97,6 +108,7 @@ const mainReducer = (state = initialState, action) => {
     //LOGIN
     case RESET_LOGIN:
       return {
+        ...state,
         loginSuccess: false,
         loginError: false,
         loginData: {},

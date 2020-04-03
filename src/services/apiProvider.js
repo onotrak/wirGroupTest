@@ -1,4 +1,5 @@
 import API from './axiosConfig';
+import API2 from './axiosConfigCorona';
 import * as url from './urls';
 
 export default {
@@ -19,12 +20,19 @@ export default {
 	},
 
 	//MENU
-	getMenu: params => {
-		return API(url.MENU_PROCESS, {
+	getCoronaProv: params => {
+		return API2(url.MENU_PROCESS, {
 			method: 'GET',
 			head: {
 				'Content-Type': 'application/json',
-				Authorization: 'Bearer ' + params,
+			},
+		});
+	},
+	getCoronaStatus: params => {
+		return API2(url.MENU_PROCESS_2, {
+			method: 'GET',
+			head: {
+				'Content-Type': 'application/json',
 			},
 		});
 	},

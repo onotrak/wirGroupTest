@@ -66,6 +66,10 @@ export const normalize = size => {
 };
 
 
-export const showMessage = (text) => {
-  ToastAndroid.show(text, ToastAndroid.SHORT);
+export const showMessage = (text, duration) => {
+  if(duration && duration === 'long'){
+    ToastAndroid.show(text, ToastAndroid.LONG);
+  }else{
+    ToastAndroid.show(text, ToastAndroid.SHORT);
+  }
 };

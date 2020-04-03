@@ -6,9 +6,11 @@ const mainInitialState = {
 	homeDataError: false,
 
 	//MENU
-	menuData: {},
-	menuDataSuccess: false,
-	menuDataError: false,
+	provCoronaSuccess: false,
+	statusCoronaSuccess: false,
+	getCoronaError: false,
+	provCorona: {},
+	statusCorona: {},
 	
 	//register
 	registerData: {},
