@@ -130,6 +130,7 @@ class CovidData extends React.Component {
                      placeholder='Input Province Location'
                      onChangeText={(text)=> this.setState({location: text})}
                      value={this.state.location}
+                     onSubmitEditing={ () => this.searchProvince() }
                   />
                   <TouchableOpacity onPress={()=> this.searchProvince()} style={styles.iconStyle} >
                      <Icon name={'map-search-outline'} size={28} color={Colors.primaryGreen2}/>
@@ -154,9 +155,10 @@ class CovidData extends React.Component {
          })
          if(data.length){
             this.setState({
-               dataCorona: data[0].attributes
+               dataCorona: data[0].attributes,
+               location: data[0].attributes.Provinsi
             })
-            showMessage('Province FOund!')
+            showMessage('Province Found!')
          }else{
             showMessage('No Province detected, Please check your Province input', 'long')
          }

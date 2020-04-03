@@ -14,7 +14,6 @@ import {
 import {connect} from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Loader from '../components/loader/Loader';
-import Header from '../components/header/Header';
 import { normalize, showMessage } from '../components/helpers/helpers';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { mainAction } from '../redux/actions';
