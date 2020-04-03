@@ -7,6 +7,7 @@ import {
 
   //ARTICLE
   RESET_ARTICLE,
+  RESET_DATA_ARTICLE,
   ARTICLE_DATA,
   ARTICLE_DATA_ERROR,
 
@@ -61,6 +62,11 @@ const mainReducer = (state = initialState, action) => {
         ...state,
         articleSuccess: false,
         articleError: false,
+      };
+    case RESET_DATA_ARTICLE:
+      return {
+        ...state,
+        articleData: []
       };
     case ARTICLE_DATA:
       return {

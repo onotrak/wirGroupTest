@@ -18,7 +18,7 @@ import Header from '../components/header/Header';
 import { normalize, showMessage } from '../components/helpers/helpers';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { mainAction } from '../redux/actions';
-import { RESET_ARTICLE } from '../redux/types';
+import { RESET_ARTICLE, RESET_DATA_ARTICLE } from '../redux/types';
 import Colors from '../styles/colors';
 
 class Article extends React.Component {
@@ -38,6 +38,7 @@ class Article extends React.Component {
    }
 
    componentWillReceiveProps(nextProps) {
+      console.log('WRP', this.props.main)
       const {articleData, articleSuccess, articleError} = this.props.main
       const {data} = this.state
       setTimeout(() => {
@@ -71,7 +72,7 @@ class Article extends React.Component {
          <View styl={styles.container}>
             <Loader show={this.state.isLoading} />
             <View style={styles.header}>
-               <TouchableOpacity onPress={()=>Actions.pop()} style={styles.btnHeader}>
+               <TouchableOpacity onPress={()=> this.handleBackButton()} style={styles.btnHeader}>
                   <Icon name='chevron-left' color={Colors.white} size={30} />
                </TouchableOpacity>
                <Text style={styles.textHeader}>Article Menu</Text>
@@ -134,6 +135,7 @@ class Article extends React.Component {
    };
 
    handleBackButton = () => {
+      // this.props.dispatch({type: RESET_DATA_ARTICLE})
       Actions.pop()
       return true;
    }

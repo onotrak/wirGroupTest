@@ -9,6 +9,7 @@ const mainInitialState = {
 	articleData: {},
 	articleSuccess: false,
 	articleError: false,
+	articleData: [],
 
 	//COVID
 	provCoronaSuccess: false,

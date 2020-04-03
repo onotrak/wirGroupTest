@@ -2,6 +2,7 @@
 export const ARTICLE_DATA = 'ARTICLE_DATA';
 export const ARTICLE_DATA_ERROR = 'ARTICLE_DATA_ERROR';
 export const RESET_ARTICLE = 'RESET_ARTICLE';
+export const RESET_DATA_ARTICLE = 'RESET_DATA_ARTICLE';
 
 //HOME
 export const HOME_DATA = 'HOME_DATA';
