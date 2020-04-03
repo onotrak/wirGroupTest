@@ -9,11 +9,11 @@ import {
 } from 'react-native';
 import {connect} from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import Loader from '../components/loader/Loader';
-import { normalize } from '../components/helpers/helpers';
+import Loader from '../../components/loader/Loader';
+import { normalize } from '../../components/helpers/helpers';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
-class Home extends React.Component {
+class Maps extends React.Component {
    constructor() {
       super();
       this.state = {
@@ -48,7 +48,9 @@ class Home extends React.Component {
                <Text style={styles.textStyle}>
                   ONOTRAK Starter
                </Text>
-               <Icon name='shield-home' color='black' size={100} />
+               <Icon name='shield-home' color='black' size={30} />
+               <Icon name='shield-account' color='black' size={30} />
+               <Icon name='shield-link-variant' color='black' size={30} />
             </View>
             <TouchableOpacity onPress={()=> this.onPressLogin()} style={styles.btnLogin}>
                <Text style={styles.textBtn}>LOGIN</Text>
@@ -93,7 +95,7 @@ const mapStateToProps = ({mainReducer}) => ({
   main: mainReducer,
 });
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(Maps);
 
 const styles = StyleSheet.create({
    container: {

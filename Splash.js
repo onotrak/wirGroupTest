@@ -24,9 +24,9 @@ class Splash extends React.Component {
 			setTimeout(() => {
 				Actions.reset('Tabbar')
 				// this.props.dispatch({type: 'RESET'});
-			}, 2500)            
+			}, 1000)            
 		} else {
-			setTimeout(() => Actions.reset('Login'), 2500)
+			setTimeout(() => Actions.reset('Login'), 1000)
 		}
 	}
 

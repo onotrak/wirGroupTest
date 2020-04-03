@@ -11,11 +11,11 @@ import {
 } from 'react-native';
 import {connect} from 'react-redux';
 import { Actions } from 'react-native-router-flux';
-import Loader from '../components/loader/Loader';
-import { normalize } from '../components/helpers/helpers';
+import Loader from '../../components/loader/Loader';
+import { normalize } from '../../components/helpers/helpers';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import Colors from '../styles/colors';
-import { LOGOUT } from '../redux/types';
+import Colors from '../../styles/colors';
+import { LOGOUT } from '../../redux/types';
 
 class Account extends React.Component {
    constructor() {

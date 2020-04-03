@@ -1,17 +1,18 @@
 import React, {Component} from 'react';
-import { StatusBar, Image, View } from 'react-native';
 import {Router, Scene, Actions} from 'react-native-router-flux';
 
 
 //screen
 import Splash from '../../Splash';
-import Main from '../screen/Main';
 import Login from '../screen/Login';
 import CovidData from '../screen/CovidData';
-import Maps from '../screen/MapsHome';
+import Article from '../screen/Article';
+import MapsHome from '../screen/MapsHome';
+
 //Tabbar
-import Home from '../screen/Home';
-import Account from '../screen/Account';
+import Home from '../screen/Tabbar/Home';
+import Maps from '../screen/Tabbar/Maps';
+import Account from '../screen/Tabbar/Account';
 
 //Icon
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -30,15 +31,14 @@ export default class Routing extends Component {
 			<Router>
 				<Scene key="root">
 					<Scene key="Splash" component={Splash} initial hideNavBar/>
-					{/* <Scene key="Main" component={Main} hideNavBar/> */}
 					<Scene key="Login" component={Login} hideNavBar/>
 					<Scene key="Tabbar" tabs showLabel={true} tabBarStyle={{backgroundColor: Colors.backgrounColor}} inactiveTintColor= {Colors.primaryGreen4} activeTintColor={Colors.primaryGreen4} hideNavBar>
-						<Scene key="Home" component={Home} title="Home" source='shield-home' icon={TabIcon} hideNavBar/>
-						<Scene key="Main" component={Main} initial title="Main" source='shield-link-variant' icon={TabIcon} hideNavBar/>
-						{/* <Scene key="Maps" component={Maps} title="Maps" source='shield-link-variant' icon={TabIcon} hideNavBar/> */}
+						<Scene key="Maps" component={Maps} title="Maps" source='shield-link-variant' icon={TabIcon} hideNavBar/>
+						<Scene key="Home" component={Home} initial title="Home" source='shield-home' icon={TabIcon} hideNavBar/>
 						<Scene key="Account" component={Account} title="Account" source='shield-account' icon={TabIcon} hideNavBar/>
 					</Scene>
 					<Scene key="CovidData" component={CovidData} hideNavBar/>
+					<Scene key="Article" component={Article} hideNavBar/>
 				</Scene>
 			</Router>
 		)
