@@ -16,10 +16,12 @@ import {connect} from 'react-redux';
 import { Actions } from 'react-native-router-flux';
 import Loader from '../components/loader/Loader';
 import LineHorizontal from '../components/line/LineHorizontal';
-import { normalize } from '../components/helpers/helpers';
+import { normalize, validateEmail, showMessage } from '../components/helpers/helpers';
 import Colors from '../styles/colors';
 import Shadow from '../styles/shadow';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { mainAction } from '../redux/actions';
+import {RESET_REGISTER, RESET_LOGIN} from '../redux/types';
 
 class Login extends React.Component {
    
@@ -27,11 +29,14 @@ class Login extends React.Component {
       super();
       this.state = {
          isLoading: false,
-         email: '',
-         password: '',
+         email: 'onotrak@mail.com',
+         password: '111111',
+         // email: '',
+         // password: '',
          name: '',
          emailReg: '',
          passwordReg: '',
+         passwordConfirmation: '',
          showPassword: true,
          wrongEmail: false,
          loginActive: false,
@@ -40,15 +45,50 @@ class Login extends React.Component {
    }
    
    componentDidMount() {
-		console.log('Login Screen')
       BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
    }
 
    componentWillReceiveProps(nextProps) {
+      console.log('WRP',nextProps.main)
+      const {loginSuccess, loginError, loginData, registerSuccess, registerError, registerData } = nextProps.main;
+      if(registerSuccess || loginSuccess){
+         this.setState({
+            isLoading: false,
+            loginActive: false,
+            registerActive: false,
+         })
+         if(registerSuccess){
+            showMessage('Register '+registerData.status.message+'!')
+            setTimeout(() => {
+               showMessage('Thanks for registering '+registerData.data.name+'!')
+            }, 2000)
+         }
+         if(loginSuccess){
+            showMessage('Login '+loginData.status.message+'!')
+            setTimeout(() => {
+               showMessage('Welcome Back '+loginData.data.user.name+'!')
+            }, 2000)
+         }
+      }
+      if(registerError || loginError){
+         this.setState({isLoading: false})
+         registerError && showMessage(registerData.status.message.email[0])
+         loginError && showMessage(loginData.status.message)
+      }
    }
    
    componentDidUpdate(prevProps, prevState) {
-      
+      const {loginSuccess, loginError, registerSuccess, registerError } = this.props.main;
+      if (registerSuccess || registerError) {
+         setTimeout(() => {
+            this.props.dispatch({type: RESET_REGISTER});
+         }, 500);
+      }
+      if (loginSuccess || loginError) {
+         setTimeout(() => {
+            this.props.dispatch({type: RESET_LOGIN});
+         }, 500);
+      }
    }
 
    componentWillUnmount() {
@@ -70,6 +110,7 @@ class Login extends React.Component {
                               <TextInput 
                                  style={styles.textInputStyle}
                                  placeholder='Email'
+                                 keyboardType='email-address'
                                  onChangeText={(text)=> this.setState({email: text})}
                                  value={this.state.email}
                               />
@@ -109,7 +150,7 @@ class Login extends React.Component {
 
             <Modal visible={this.state.registerActive} onRequestClose={()=> this.setState({registerActive: false})} animationType='slide' transparent={true}>
                <View style={styles.containerModal}>
-                  <View style={[styles.loginStyle, Shadow.shadowTop, {backgroundColor: Colors.white}]}>
+                  <View style={[styles.loginStyle, Shadow.shadowTop, {backgroundColor: Colors.white, height: '85%'}]}>
                      <View style={styles.login2Style}>
                         <Text style={[styles.loginText, {color: Colors.primaryGreen2}]}>REGISTER</Text>
                         <LineHorizontal style={styles.line1} size={2} color={Colors.primaryGreen2} />
@@ -126,6 +167,7 @@ class Login extends React.Component {
                               <TextInput 
                                  style={styles.textInputStyle}
                                  placeholder='Email'
+                                 keyboardType='email-address'
                                  onChangeText={(text)=> this.setState({emailReg: text})}
                                  value={this.state.emailReg}
                               />
@@ -134,9 +176,18 @@ class Login extends React.Component {
                               <TextInput 
                                  style={styles.textInputStyle}
                                  placeholder='Password'
-                                 secureTextEntry={this.state.showPassword}
+                                 secureTextEntry={true}
                                  onChangeText={(text)=> this.setState({passwordReg: text})}
                                  value={this.state.passwordReg}
+                              />
+                           </View>
+                           <View style={[styles.textInputView2, Shadow.shadow, {width: '100%'}]}>
+                              <TextInput 
+                                 style={styles.textInputStyle}
+                                 placeholder='Password Confirmation'
+                                 secureTextEntry={true}
+                                 onChangeText={(text)=> this.setState({passwordConfirmation: text})}
+                                 value={this.state.passwordConfirmation}
                               />
                            </View>
                            <TouchableOpacity onPress={()=> this.onPressRegister()} style={[styles.btnRegister2, Shadow.shadow, {alignSelf: 'center'}]}>
@@ -189,12 +240,50 @@ class Login extends React.Component {
       );
    }
 
-   onPressLogin = () => {
-      this.setState({isLoading: true})
-      setTimeout(() => {
-         this.setState({isLoading: false})
-         Actions.Main()
-      }, 2000)
+   onPressLogin = async () => {
+      const {
+         email,
+         password,
+      } = this.state;
+      const {dispatch} = this.props;
+
+      if (!email || !password) {
+         return alert('Email and Password is required!');
+      }
+      if (!validateEmail(email)) return alert('Format email is no valid');
+
+      const params = {
+         email: email,
+         password: password,
+      };
+
+      await this.setState({isLoading: true});
+      dispatch(mainAction.loginProcess(params));
+   }
+
+   onPressRegister = async () => {
+      const {
+         name,
+         emailReg,
+         passwordReg,
+         passwordConfirmation,
+      } = this.state;
+      const {dispatch} = this.props;
+
+      if (!name || !emailReg || !passwordReg || !passwordConfirmation) {
+         return alert('All field is required!');
+      }
+      if (!validateEmail(emailReg)) return alert('Format email is no valid');
+
+      const params = {
+         name,
+         email: emailReg,
+         password: passwordReg,
+         c_password: passwordConfirmation,
+      };
+
+      await this.setState({isLoading: true});
+      dispatch(mainAction.registerProcess(params));
    }
 
    handleBackButton = () => {

@@ -8,7 +8,7 @@ const API = async (
   },
 ) => {
   const request = {
-    baseURL: 'http://onotrak.com/',
+    baseURL: 'http://recruitment.devmind2.net/',
     method: options.method,
     timeout: 100000,
     url,

@@ -7,6 +7,14 @@ import {
   //MENU
   MENU_DATA,
   MENU_DATA_ERROR,
+  
+  //REGISTER
+  REGISTER_DATA,
+  REGISTER_DATA_ERROR,
+  
+  //LOGIN
+  LOGIN_DATA,
+  LOGIN_DATA_ERROR,
 
 } from './types';
 import api from '../services/apiProvider';
@@ -41,6 +49,38 @@ export const getMenu = params => {
         const response = error.response.data;
         console.log(response, 'error');
         dispatch({type: MENU_DATA_ERROR, response});
+      });
+  };
+};
+
+//AUTH
+export const registerProcess = params => {
+  return dispatch => {
+    api
+      .registerProcess(params)
+      .then(response => {
+        console.log('onotrak response register',response);
+        dispatch({type: REGISTER_DATA, response});
+      })
+      .catch(error => {
+        const response = error;
+        console.log(response, 'error');
+        dispatch({type: REGISTER_DATA_ERROR, response});
+      });
+  };
+};
+export const loginProcess = params => {
+  return dispatch => {
+    api
+      .loginProcess(params)
+      .then(response => {
+        console.log('onotrak response login',response);
+        dispatch({type: LOGIN_DATA, response});
+      })
+      .catch(error => {
+        const response = error;
+        console.log(response, 'error');
+        dispatch({type: LOGIN_DATA_ERROR, response});
       });
   };
 };

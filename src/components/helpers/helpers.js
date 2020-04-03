@@ -1,4 +1,4 @@
-import { Dimensions, PixelRatio, Platform } from "react-native";
+import { Dimensions, PixelRatio, Platform, ToastAndroid } from "react-native";
 
 const isIOS = Platform.OS === 'ios';
 
@@ -63,4 +63,9 @@ export const normalize = size => {
   } else {
     return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2;
   }
+};
+
+
+export const showMessage = (text) => {
+  ToastAndroid.show(text, ToastAndroid.SHORT);
 };
