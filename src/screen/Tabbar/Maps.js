@@ -22,7 +22,6 @@ class Maps extends React.Component {
    }
    
    componentDidMount() {
-		console.log('Home Screen')
       BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
    }
 

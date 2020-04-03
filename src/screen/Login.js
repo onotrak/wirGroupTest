@@ -49,7 +49,6 @@ class Login extends React.Component {
    }
 
    componentWillReceiveProps(nextProps) {
-      console.log('WRP',nextProps.main)
       const {loginSuccess, loginError, loginData, registerSuccess, registerError, registerData } = nextProps.main;
       if(registerSuccess || loginSuccess){
          if(registerSuccess){

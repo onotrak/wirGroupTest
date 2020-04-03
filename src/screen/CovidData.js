@@ -38,7 +38,6 @@ class CovidData extends React.Component {
    }
    
    componentDidMount() {
-      console.log('onotrak CDM', this.props)
       const {provCorona} = this.props.main
       const provDIY = 'Daerah Istimewa Yogyakarta'
       if(provCorona && provCorona.length){
@@ -47,7 +46,6 @@ class CovidData extends React.Component {
          })
 
          dataCorona.length && this.setState({dataCorona: dataCorona[0].attributes})
-         console.log('onotrak state', dataCorona[0].attributes)
       }
 
       this.props.dispatch(mainAction.getCoronaProv());
@@ -64,7 +62,6 @@ class CovidData extends React.Component {
          })
 
          dataCorona.length && this.setState({dataCorona: dataCorona[0].attributes})
-         console.log('onotrak state', dataCorona[0].attributes)
       }
    }
    
@@ -83,7 +80,6 @@ class CovidData extends React.Component {
    
    render(){
       const {dataCorona} = this.state
-      console.log('onotrak hasil', dataCorona)
       return (
          <View styl={styles.container}>
             <Loader show={this.state.isLoading} />
@@ -146,7 +142,6 @@ class CovidData extends React.Component {
       const {location} = this.state
       const {provCorona} = this.props.main
       await this.setState({isLoading: true})
-      console.log('onotrak provCorona', this.props)
       if(provCorona.length){
          let data = provCorona.filter(x => {
             return x.attributes.Provinsi.toUpperCase().search(location.toUpperCase()) !== -1

@@ -26,8 +26,6 @@ class Account extends React.Component {
    }
    
    componentDidMount() {
-      console.log('onotrak CDM', this.props)
-		console.log('Account Screen')
       BackHandler.addEventListener('hardwareBackPress', this.handleBackButton);
    }
 
@@ -43,7 +41,6 @@ class Account extends React.Component {
    }
    
    render(){
-      console.log('onotrak rndr', this.props)
       const {user} = this.props.main.userData
       return (
          <View styl={styles.container}>

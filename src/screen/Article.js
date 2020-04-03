@@ -40,7 +40,6 @@ class Article extends React.Component {
    componentWillReceiveProps(nextProps) {
       const {articleData, articleSuccess, articleError} = this.props.main
       const {data} = this.state
-      console.log('WRP', this.props.main)
       setTimeout(() => {
          
       }, 2000)
@@ -118,13 +117,11 @@ class Article extends React.Component {
    }
 
    fetchRecords = (page) => {
-      console.log('onotrak refresh', page)
       const {userData} = this.props.main
       this.props.dispatch(mainAction.getArticle(page, userData.token));
    }
    
    onScrollHandler = async () => {
-      console.log('onotrak handlescroll')
       await this.setState({refreshing: true})
       this.setState({
          page: this.state.page + 1
