@@ -92,9 +92,9 @@ class Article extends React.Component {
                         <View style={styles.cardList}>
                            <View style={styles.cardList1}>
                               <Image source={{uri: item.image}} resizeMode='contain' style={styles.imgList} />
-                              <View>
-                                 <Text style={styles.titleList}>{item.title}</Text>
-                                 <Text style={styles.titleList}>{item.category}</Text>
+                              <View style={styles.textView}>
+                                 <Text numberOfLines={1} style={styles.titleList}>{item.title}</Text>
+                                 <Text numberOfLines={1} style={styles.titleList}>{item.category}</Text>
                               </View>
                            </View>
                            <Text style={styles.descList}>{item.description}</Text>
@@ -184,18 +184,22 @@ const styles = StyleSheet.create({
    },
    cardList1: {
       flexDirection: 'row',
-      width: '70%',
+      width: '100%',
    },
    imgList: {
-      width: '70%',
+      width: '40%',
       height: 100,
       alignSelf: 'flex-start',
+   },
+   textView: {
+      width: '60%',
+      paddingTop: 20,
    },
    titleList: {
       fontSize: normalize(15),
       color: Colors.primaryGreen4,
       textAlign: 'center',
-      marginLeft: 15,
+      marginLeft: 10,
    },
    descList: {
       fontSize: normalize(13),
